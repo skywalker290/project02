@@ -1,5 +1,4 @@
 import os
-import cv2
 from functions import *
 from flask import Flask, request, jsonify
 

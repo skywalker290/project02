@@ -2,6 +2,8 @@ from paddleocr import PaddleOCR
 import re
 from super_gradients.training import models  
 import requests
+import cv2
+import os
 
 def download_image(image_url):
     response = requests.get(image_url)
