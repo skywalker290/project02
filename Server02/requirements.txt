@@ -1,0 +1,6 @@
+opencv-python-headless 
+requests
+Flask 
+paddlepaddle 
+paddleocr 
+super-gradients
