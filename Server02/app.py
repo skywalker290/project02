@@ -17,6 +17,7 @@ def upload_image():
         image_path = download_image(image_url)
         if not image_path:
             return jsonify({"error": "Failed to download image"}), 400
+        return jsonify({"output": "Image uploaded successfully"}), 200
     return jsonify({"error": "Image URL not provided"}), 400
 
 @app.route('/scan',methods = ['POST'])
