@@ -1,4 +1,4 @@
-cd ~/project02
+cd ~/project02/Server02/
 git pull
 
 PID=$(lsof -t -i:5000)
