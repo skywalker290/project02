@@ -1,10 +1,16 @@
 import os
 from functions import *
 from flask import Flask, request, jsonify
+from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+
+# Enable CORS for all routes
+CORS(app)
 
 import cv2
 
-app = Flask(__name__)
 
 if not os.path.exists('Images'):
     os.makedirs('Images')
@@ -22,7 +28,7 @@ def upload_image():
 
 
 @app.route('/fileupload', methods=['POST'])
-def upload_image():
+def upload_file():
     if 'file' not in request.files:
         return jsonify({"error": "No file part in the request"}), 400
 
@@ -36,6 +42,7 @@ def upload_image():
     file.save(image_path)
 
     # Respond with the image name for further processing
+    print(file.filename)
     return jsonify({"image_name": file.filename}), 200
 
 @app.route('/scan',methods = ['POST'])
