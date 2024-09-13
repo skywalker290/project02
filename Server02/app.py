@@ -7,7 +7,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Enable CORS for all routes
-CORS(app)
+CORS(app, resources={r"/fileupload": {"origins": "*"}})
+
 
 import cv2
 
