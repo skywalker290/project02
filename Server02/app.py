@@ -5,6 +5,7 @@ from flask import Flask
 from flask_cors import CORS
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB
 
 # Enable CORS for all routes
 CORS(app, resources={r"/fileupload": {"origins": "*"}})
