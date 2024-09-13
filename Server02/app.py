@@ -20,6 +20,24 @@ def upload_image():
         return jsonify({"output": "Image uploaded successfully"}), 200
     return jsonify({"error": "Image URL not provided"}), 400
 
+
+@app.route('/fileupload', methods=['POST'])
+def upload_image():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part in the request"}), 400
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({"error": "No file selected"}), 400
+
+    # Save the image to the 'Images' folder
+    image_path = os.path.join('Images', file.filename)
+    file.save(image_path)
+
+    # Respond with the image name for further processing
+    return jsonify({"image_name": file.filename}), 200
+
 @app.route('/scan',methods = ['POST'])
 def inference():
     image_name = request.json.get('image_name')
