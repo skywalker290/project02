@@ -15,6 +15,9 @@ import cv2
 if not os.path.exists('Images'):
     os.makedirs('Images')
 
+@app.route('/')
+def home():
+    return jsonify({"hello":"home"})
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
