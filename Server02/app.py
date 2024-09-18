@@ -56,7 +56,7 @@ def inference():
         if vehicle_number:
             return jsonify({"vehicle_number": vehicle_number,"vehicle_type":vehicle_type}), 200
         else:
-            return jsonify({"error": "Vehicle number not found"}), 404
+            return jsonify({"vehicle_type": vehicle_type}), 200
     else:
         return jsonify({"error": "Failed to find image"}), 400
 
