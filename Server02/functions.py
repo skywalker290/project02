@@ -24,9 +24,9 @@ def recognize_vehicle_number(image_path):
     ocr = PaddleOCR(use_angle_cls=True, lang='en')
     img = cv2.imread(image_path)
     result = ocr.ocr(img)
-    if line :
+    if result :
         for line in result:
-            if word :
+            if line :
                 for word in line:
                     detected_text = word[1][0]
                     confidence = word[1][1]
