@@ -24,15 +24,16 @@ def recognize_vehicle_number(image_path):
     ocr = PaddleOCR(use_angle_cls=True, lang='en')
     img = cv2.imread(image_path)
     result = ocr.ocr(img)
-    
-    for line in result:
-        for word in line:
-            detected_text = word[1][0]
-            confidence = word[1][1]
-            print(detected_text, confidence)
-            
-            if len(detected_text) >= 2 and detected_text[:2] in indian_number_plate_initials:
-                return detected_text
+    if line :
+        for line in result:
+            if word :
+                for word in line:
+                    detected_text = word[1][0]
+                    confidence = word[1][1]
+                    print(detected_text, confidence)
+                    
+                    if len(detected_text) >= 2 and detected_text[:2] in indian_number_plate_initials:
+                        return detected_text
     return None
 
 def detect_vehicle_type(image_path):
