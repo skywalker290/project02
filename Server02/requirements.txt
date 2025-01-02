@@ -4,3 +4,5 @@ Flask
 paddlepaddle 
 paddleocr 
 super-gradients
+flask-cors
+pycocotools
