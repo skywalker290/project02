@@ -37,13 +37,15 @@ def recognize_vehicle_number(image_path):
     return None
 
 def detect_vehicle_type(image_path):
-    model = models.get("yolo_nas_s", pretrained_weights="coco")
+    # Load the YOLO-NAS model
+    model = models.YOLO_NAS_S(pretrained_weights="coco")
+    
     vehicle_classes = ['car', 'bus', 'truck', 'motorcycle']
-
     image = cv2.imread(image_path)
     if image is None:
         return None
 
+    # Perform prediction
     results = model.predict(image)
 
     class_ids = results.prediction.labels  
@@ -51,4 +53,5 @@ def detect_vehicle_type(image_path):
         class_name = results.class_names[int(class_id)]
         if class_name in vehicle_classes:
             return class_name  
-    return None  
+    return None
+  
