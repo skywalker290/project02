@@ -70,7 +70,7 @@ def llmscan():
     image_path = os.path.join('Images', image_name)
     
     if image_path:
-        vehicle_number = recognize_vehicle_number(image_path)
+        vehicle_number = llama_license_plate(image_path)
         # vehicle_type = detect_vehicle_type(image_path)
         vehicle_type = "random car"
         if vehicle_number:
