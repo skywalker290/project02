@@ -4,6 +4,7 @@ from super_gradients.training import models
 import requests
 import cv2
 import os
+import ollama
 
 def download_image(image_url):
     response = requests.get(image_url)
@@ -52,3 +53,15 @@ def detect_vehicle_type(image_path):
         if class_name in vehicle_classes:
             return class_name  
     return None  
+
+
+def llama_license_plate(image_path):
+    response = ollama.chat(
+    model='llama3.2-vision',
+    messages=[{
+        'role': 'user',
+        'content': "There's a Vehicle in the Image, Return the Exact License plate read of the Vehicle Nothing else",
+        'images': [image_path]
+    }]
+    )
+    return response.content.chat
