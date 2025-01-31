@@ -63,6 +63,22 @@ def inference():
             return jsonify({"vehicle_type": vehicle_type}), 200
     else:
         return jsonify({"error": "Failed to find image"}), 400
+    
+@app.route('/llmscan',methods = ['POST'])
+def llmscan():
+    image_name = request.json.get('image_name')
+    image_path = os.path.join('Images', image_name)
+    
+    if image_path:
+        vehicle_number = recognize_vehicle_number(image_path)
+        # vehicle_type = detect_vehicle_type(image_path)
+        vehicle_type = "random car"
+        if vehicle_number:
+            return jsonify({"vehicle_number": vehicle_number,"vehicle_type":vehicle_type}), 200
+        else:
+            return jsonify({"vehicle_type": vehicle_type}), 200
+    else:
+        return jsonify({"error": "Failed to find image"}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
