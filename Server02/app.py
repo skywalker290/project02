@@ -71,8 +71,8 @@ def llmscan():
     
     if image_path:
         vehicle_number = llama_license_plate(image_path)
-        # vehicle_type = detect_vehicle_type(image_path)
-        vehicle_type = "random car"
+        vehicle_type = detect_vehicle_type(image_path)
+        # vehicle_type = 
         if vehicle_number:
             return jsonify({"vehicle_number": vehicle_number,"vehicle_type":vehicle_type}), 200
         else:
