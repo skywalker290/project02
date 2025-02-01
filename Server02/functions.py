@@ -64,4 +64,4 @@ def llama_license_plate(image_path):
         'images': [image_path]
     }]
     )
-    return response.content.chat
+    return response.message.content
