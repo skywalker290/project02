@@ -18,6 +18,7 @@ echo "Starting Gunicorn server..."
 echo "============================================" >> output.log
 echo "Gunicorn server started at: $(date '+%Y-%m-%d %H:%M:%S')" >> output.log
 echo "============================================" >> output.log
+export PYTHONUNBUFFERED=1
 nohup /home/drivool/.pyenv/versions/3.10.13/envs/yolo/bin/gunicorn -b 0.0.0.0:5003 app:app >> output.log 2>&1 &
 
 echo "Gunicorn server started"
